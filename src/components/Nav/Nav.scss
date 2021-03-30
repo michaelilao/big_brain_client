@@ -1,0 +1,10 @@
+@import '../../styles/App.scss';
+nav {
+  background-color: $light-blue
+}
+.navbar-brand:hover {
+    color: $dark-blue !important;
+}
+.brand-name{
+  font-weight: 300;
+}

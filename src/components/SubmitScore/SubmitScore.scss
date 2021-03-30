@@ -1,0 +1,14 @@
+@import '../../styles/App.scss';
+
+.text-header{
+    font-weight: 400;
+}
+
+.btn-score {
+    background-color: $dark-blue !important;
+    border-color: $dark-blue  !important;
+}
+.btn-score:hover {
+    background-color: $darker-blue !important;
+    border-color: $darker-blue  !important;
+}
