@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Jumbotron, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Analytics } from '../Analytics/Analytics'
 import { addScore, getAverageScore } from '../../requests/requests'
 import './SubmitScore.scss'
 
 
-export const SubmitScore = ({userScores, setScreen}) => {
+export const SubmitScore = ({userScores, setScreen, skipSubmit}) => {
     const [userName, setUserName] = useState(" ")
     const [showForm, setShowForm] = useState(false)
     const [showAnalytics, setshowAnalytics] = useState(false)
     const [metrics, setMetrics] = useState([])
+
+    useEffect(() => {
+        if(skipSubmit) {
+            async function getAverageScores() {
+                const metric = await getAverageScore()
+                setMetrics(metric.data)
+                setshowAnalytics(true)
+              }
+
+            getAverageScores()
+        }
+      }, [skipSubmit]); 
+
     const finalScore = (userScores.reduce((a, b) => a + b, 0) / userScores.length).toFixed(2)
     const createUserScores = () => {
         return (
@@ -42,7 +55,7 @@ export const SubmitScore = ({userScores, setScreen}) => {
     }
 
     return (
-        <div>
+        <div id="SubmitScore">
             <Jumbotron className="justify-content-center">
                 <Container>
                     <Row>

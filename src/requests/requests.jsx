@@ -12,3 +12,9 @@ export const getAverageScore = async (req) => {
     const response = await axios.get(`${API}/score/getaveragescores`)
     return response
 }
+
+export const getScore = async (req) => {
+    const username = req.username;
+    const response = await axios.get(`${API}/score/getscore/${username}`)
+    return response
+}
