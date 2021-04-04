@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 
 import { Nav } from './components/Nav/Nav'
 import { SubmitScore } from './components/SubmitScore/SubmitScore'
+import { NumberMemory } from './components/NumberMemory/NumberMemory'
 import './styles/App.scss';
 
 
