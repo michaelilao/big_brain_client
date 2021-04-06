@@ -15,7 +15,7 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore}) => {
         if(searchUserName !== ' '){
             try{
                 const res = await getScore({username: searchUserName})
-                const score = res.data.score.score
+                const score = res.data.score[0].score
                 setUserScore(score)
                 setShowAnalytics(true)
                 setScreen('SubmitScore')
@@ -49,8 +49,8 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore}) => {
                         <span className="font-weight-bold pl-1">Number Memory</span>
                     </p>
                     <p>
-                        Below you can <span className="font-weight-bold">Start</span> your assesmment or 
-                        <span className="font-weight-bold">Search</span> for a previous assessment
+                        Below you can <span className="font-weight-bold">Start</span> your assesmment 
+                        or <span className="font-weight-bold">Search</span> for a previous assessment
                     </p>
                     </Col>
                 </Row>
