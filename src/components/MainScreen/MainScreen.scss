@@ -1,16 +1,23 @@
 @import '../../styles/App.scss';
 
-#SubmitScore {
-    .text-header{
-        font-weight: 400;
+#MainScreen {
+    .fade-in-hello {
+        animation: fade 1.5s ease-in;
     }
     
-    .btn-score {
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+    }
+
+    .btn-start {
         background-color: $dark-blue !important;
         border-color: $dark-blue  !important;
     }
-    .btn-score:hover {
+    .btn-start:hover {
         background-color: $darker-blue !important;
         border-color: $darker-blue  !important;
     }
+
 }

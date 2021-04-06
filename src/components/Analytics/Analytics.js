@@ -57,13 +57,15 @@ export const Analytics = ({ userScores, metrics }) => {
                 },
                 baseSeries: 1,
             
-                series: [{
-                    type: 'line',
-                    data: metrics.miniGameScores[0]
-                }]
+                series: [
+                    {
+                    type: 'scatter',
+                    data: metrics.miniGameScores[index]
+                    }
+                ]
             }
             return (
-                <Col xs={6}>
+                <Col key={index} xs={6}>
                     <HighchartsReact
                             highcharts={Highcharts}
                             options={options}
@@ -73,7 +75,7 @@ export const Analytics = ({ userScores, metrics }) => {
         })
     }
     return (
-        <Container fluid className="px-5">
+        <Container id="Analystics" fluid className="px-5">
             {metrics && (
                 <Row>
                     {generateMiniGameCharts()}
