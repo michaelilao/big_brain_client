@@ -1,0 +1,99 @@
+body {
+  margin: auto;
+  text-align: center;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
+  Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji",
+  "Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 300;
+}
+
+.grid{
+  height: 300px;
+  width: 300px;
+  display: grid;
+  border: 5px solid #9e9e9e;
+  grid-template-columns: auto auto auto;
+  margin: 40px auto 10px auto;
+  border-radius: 5px;
+}
+
+.box{
+  border: 1px solid lightgrey;
+}
+
+.selected{
+  background-color: rgba(117, 165, 254, 0.731);
+  border: 1px solid #1F75FE;
+}
+
+.game-title{
+  margin: 2% auto 2% auto;
+  padding-bottom: 1%;
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.next-round{
+  margin-top: 10px;
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #538EFF ;
+  background-color: #538EFF;
+}
+
+.next-round:hover{
+  background-color: #1F75FE;
+  border-color: #1F75FE;
+}
+
+.next-round-invalid{
+  margin-top: 10px;
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #1F75FE;
+  background-color: #1F75FE;
+}
+
+#game-header{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 200px;
+  flex-direction: row;
+  margin: auto;
+  justify-content: center;
+  font-weight: 300;
+}
+
+.game-progress{
+  color: rgb(36, 36, 36);
+  margin: 10px auto 0px auto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#reaction-time-header{
+  margin-top: 25px;
+  margin-bottom: -5px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#reaction-time{
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#initial-screen{
+  margin-top: 0px;
+  margin-bottom: 20px;
+  color: transparent;
+  font-size: 20px;
+}
