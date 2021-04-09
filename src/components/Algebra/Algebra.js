@@ -8,7 +8,7 @@ import {Data} from './Data'
 
 const instruction = "Click the corresponding answer for the given prompt"
 
-function Algebra({setUserScore, setScreen}) {
+function Algebra({setUserScore, setScreen, nextScreen}) {
     const [completed, setCompleted] = useState(100);
     const [optionClicked, setOption] = useState(0);
     const [newCombination, setNew] = useState(0);
@@ -22,8 +22,10 @@ function Algebra({setUserScore, setScreen}) {
     var times = 0;
     useEffect(() => {
         var interval = setInterval(() => {
-            if(times==100){
+            if(times==5){
                 clearInterval(interval);
+                setUserScore(score);
+                setScreen(nextScreen);
                 return;
             }
             times++;
