@@ -5,6 +5,7 @@ import { Nav } from './components/Nav/Nav'
 import { SubmitScore } from './components/SubmitScore/SubmitScore'
 import { MainScreen } from './components/MainScreen/MainScreen'
 import Algebra from './components/Algebra/Algebra'
+import NumberMemory from './components/NumberMemory/NumberMemory'
 
 import './styles/App.scss';
 
@@ -36,7 +37,11 @@ const App = () => {
       {screen == 'Algebra' &&
         <Algebra></Algebra>
       }
+      {screen == 'NumberMemory' &&
+        <NumberMemory/>
+      }
     </Container>
+    
   );
 }
 
