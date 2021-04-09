@@ -56,7 +56,7 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore}) => {
                 </Row>
                 <Row className="justify-content-center py-4">
                     <Col xs={4}>
-                        <Button size="lg" className="btn-start w-100">
+                        <Button size="lg" className="btn-start w-100" onClick={()=>setScreen('Algebra')}>
                             Start Assessment
                         </Button>
                     </Col>

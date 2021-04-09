@@ -13,6 +13,7 @@ import './styles/App.scss';
 const App = () => {
   const [userScore, setUserScore] = useState([])
   const [showAnalytics, setShowAnalytics] = useState(false)
+  const [screen, setScreen] = useState('MainScreen')
 
   useEffect(() => {
     setUserScore(Array.from({ length: 6 }, () => Math.floor((Math.random() * 40) + 60)));
@@ -22,9 +23,10 @@ const App = () => {
     setScreen(screen)
   }
   const handleSetUserScore = (score) => {
-    setUserScore(score)
+    const newScore = userScore.slice(0)
+    newScore.push(score)
+    setUserScore(newScore)
   }
-  const [screen, setScreen] = useState('MainScreen')
   return (
     <Container fluid className="p-0">
       <Nav setScreen={handleSetScreen} setUserScore={handleSetUserScore}/>
@@ -34,10 +36,10 @@ const App = () => {
       {screen === 'MainScreen' && 
         <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics}></MainScreen>
       }
-      {screen == 'Algebra' &&
-        <Algebra></Algebra>
+      {screen === 'Algebra' &&
+        <Algebra setUserScore={handleSetUserScore} setScreen ={handleSetScreen}></Algebra>
       }
-      {screen == 'NumberMemory' &&
+      {screen === 'NumberMemory' &&
         <NumberMemory/>
       }
     </Container>

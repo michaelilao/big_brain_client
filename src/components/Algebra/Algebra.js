@@ -8,7 +8,7 @@ import {Data} from './Data'
 
 const instruction = "Click the corresponding answer for the given prompt"
 
-function Algebra() {
+function Algebra({setUserScore, setScreen}) {
     const [completed, setCompleted] = useState(100);
     const [optionClicked, setOption] = useState(0);
     const [newCombination, setNew] = useState(0);
