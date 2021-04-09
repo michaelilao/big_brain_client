@@ -25,7 +25,6 @@ const App = () => {
   const handleSetUserScore = (score) => {
     const newScore = userScore.slice(0)
     newScore.push(score)
-    console.log(newScore)
     setUserScore(newScore)
   }
   return (
@@ -35,7 +34,7 @@ const App = () => {
         <SubmitScore userScores={userScore} setScreen ={handleSetScreen} skipSubmit={showAnalytics}/>
       }
       {screen === 'MainScreen' && 
-        <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics} nextScreen={'Algebra'}></MainScreen>
+        <MainScreen setUserScore={setUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics} nextScreen={'Algebra'}></MainScreen>
       }
       {screen === 'Algebra' &&
         <Algebra setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SeqController'}></Algebra>

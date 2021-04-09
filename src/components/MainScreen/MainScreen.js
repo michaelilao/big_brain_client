@@ -15,11 +15,12 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore, nextScree
         if(searchUserName !== ' '){
             try{
                 const res = await getScore({username: searchUserName})
-                const score = res.data.score[0].score
+                const score = res.data.score.score
                 setUserScore(score)
                 setShowAnalytics(true)
                 setScreen('SubmitScore')
             } catch(err) {
+                console.log(err)
                 setAlertDetails('Username does not exist')
             }
         }
@@ -35,7 +36,7 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore, nextScree
         <div id="MainScreen">
             <Jumbotron className="justify-content-center">
                 <Container>
-                    <h1 className="display-4">Welcome to Big Brain</h1>
+                    <h1 className="display-4 text-left">Welcome to Big Brain</h1>
                     <h4 className='lead'>Where your brain gets bigger</h4>
                 </Container>
             </Jumbotron>
