@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Button, Form, ProgressBar } from 'react-bootstrap';
 import './NumberMemory.scss';
 
 export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
@@ -24,12 +24,14 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
       console.log("ok correct");
       var newScore = score+10
       setScore(newScore)
+      setInput("")
       if(newScore >= 100){
         setUserScore(newScore)
         setScreen(nextScreen)
       }
     }
     else {
+      alert("Your Score for Number Memory is: ", this.StaticRange.score);
       console.log(score)
       setUserScore(score)
       setScreen(nextScreen)
@@ -64,7 +66,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
     }
   }
   return (
-    <div>
+    <div className="mainBack">
       
       <div>
         { showing 
@@ -72,7 +74,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
             <div>
               <img className="imgheading" src="https://static.memrise.com/img/400sqf/from/uploads/course_photos/591251000130123213405.jpg"></img>
               <h1 className="nummebheading" id="head">Number Memory</h1>
-              <button type="button" className="btn btn-danger" onClick={(event) => {changeScreen(); makeTimer(); changeHeading();}} style={{ height: '50px', width: '225px', marginLeft: '550px', marginTop: '40px'}}> Start </button>
+              <button type="button" className="btn btn-danger" onClick={(event) => {changeScreen(); makeTimer(); changeHeading();}} style={{ height: '50px', width: '225px', marginLeft: '550px', marginTop: '40px', marginBottom: '300px'}}> Start </button>
             </div>
             : null
         }
@@ -87,19 +89,17 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
               </div>
               <h2 className="shownum">{num}</h2>
               <br/>
-              <div className="progress">
-                <div id='prog' className="progress-bar" role="progressbar" style={{width: '50%'}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+              <ProgressBar variant="info" now={20} />
               <h4 className="ques">What was the Number?</h4>
               
               {num == " " ? 
-              <input className="form-control" 
+              <input className="finput" 
               type="text" onChange={getInput} 
               placeholder="Enter Number"
               value={input}
               /> 
               : 
-              <input className="form-control" 
+              <input className="finput" 
               type="text" onChange={getInput} 
               placeholder="Enter Number"
               value={input} disabled
