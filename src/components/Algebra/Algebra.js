@@ -22,11 +22,8 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
     var times = 0;
     useEffect(() => {
         var interval = setInterval(() => {
-            if(times==5){
+            if(times==100){
                 clearInterval(interval);
-                console.log(score)
-                setUserScore(score);
-                setScreen(nextScreen);
                 return;
             }
             times++;
@@ -34,6 +31,13 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
         }, 1000);
 
     }, []);
+    useEffect(()=>{
+        if(completed == 95){
+            console.log(score)
+            setUserScore(score);
+            setScreen(nextScreen);
+        }
+    }, [completed]);
     useEffect(()=>{//handling click
         if(optionClicked>0){
             setOption(0);

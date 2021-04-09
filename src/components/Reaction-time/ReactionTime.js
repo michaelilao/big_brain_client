@@ -110,27 +110,28 @@ function ReactionTime({ setUserScore, setScreen, nextScreen}) {
       
       roundScore = roundScore > 10 ? 10 : roundScore
       setScore(score+roundScore)
+      return score+roundScore
     }
 
     //Wrapper function for when the correct sqaure is pressed
     const sqaurePressed = (selected) => {
       if(selected){
-        updateScore();
+        const updatedScore = updateScore();
         resetColour(selected);
-        updateRound();
+        updateRound(updatedScore);
       }
 
     }
-    const handleGameDone = () => {
+    const handleGameDone = (score) => {
       console.log('here')
       setUserScore(score)
       setScreen(nextScreen)
     }
     //To update the current round of the game
-    const updateRound = () => {
+    const updateRound = (score) => {
       setRound(round+1)
       if(round+1 >= 3){
-        handleGameDone()
+        handleGameDone(score)
       }
     }
 

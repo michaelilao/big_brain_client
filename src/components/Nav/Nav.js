@@ -8,7 +8,7 @@ export const Nav = ({setScreen, setUserScore}) => {
     const handleClick = () =>
     {
         setScreen('MainScreen')
-        setUserScore([])
+        setUserScore([0])
     }
     return (
         <Container id="NavBar" fluid className="px-0">
