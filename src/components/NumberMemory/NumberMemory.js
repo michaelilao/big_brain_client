@@ -31,7 +31,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
       }
     }
     else {
-      alert("Your Score for Number Memory is: ", this.StaticRange.score);
+      alert(`Your Score for Number Memory is:${score}`);
       console.log(score)
       setUserScore(score)
       setScreen(nextScreen)

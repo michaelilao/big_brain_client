@@ -12,12 +12,12 @@ import './styles/App.scss';
 
 
 const App = () => {
-  const [userScore, setUserScore] = useState([])
+  const [userScore, setUserScore] = useState([0])
   const [showAnalytics, setShowAnalytics] = useState(false)
   const [screen, setScreen] = useState('MainScreen')
   
   useEffect(() => {
-    setUserScore([])
+    setUserScore([0])
   }, [])
   const handleSetScreen = (screen) => {
     setScreen(screen)
@@ -30,7 +30,7 @@ const App = () => {
   }
   return (
     <Container fluid className="p-0">
-      <Nav setScreen={handleSetScreen} setUserScore={handleSetUserScore}/>
+      <Nav setScreen={handleSetScreen} setUserScore={setUserScore}/>
       {screen === 'SubmitScore' && 
         <SubmitScore userScores={userScore} setScreen ={handleSetScreen} skipSubmit={showAnalytics}/>
       }
