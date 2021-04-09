@@ -31,7 +31,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
       }
     }
     else {
-      alert("Your Score for Number Memory is: ", this.StaticRange.score);
+      alert("Your Score for Number Memory is: ", score);
       console.log(score)
       setUserScore(score)
       setScreen(nextScreen)
@@ -74,7 +74,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
             <div>
               <img className="imgheading" src="https://static.memrise.com/img/400sqf/from/uploads/course_photos/591251000130123213405.jpg"></img>
               <h1 className="nummebheading" id="head">Number Memory</h1>
-              <button type="button" className="btn btn-danger" onClick={(event) => {changeScreen(); makeTimer(); changeHeading();}} style={{ height: '50px', width: '225px', marginLeft: '550px', marginTop: '40px', marginBottom: '300px'}}> Start </button>
+              <button type="button" className="btn btn-danger startbut" onClick={(event) => {changeScreen(); makeTimer(); changeHeading();}} style={{ }}> Start </button>
             </div>
             : null
         }
