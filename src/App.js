@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import { Nav } from './components/Nav/Nav'
 import { SubmitScore } from './components/SubmitScore/SubmitScore'
 import { MainScreen } from './components/MainScreen/MainScreen'
+import Algebra from './components/Algebra/Algebra'
 
 import './styles/App.scss';
 
@@ -31,6 +32,9 @@ const App = () => {
       }
       {screen === 'MainScreen' && 
         <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics}></MainScreen>
+      }
+      {screen == 'Algebra' &&
+        <Algebra></Algebra>
       }
     </Container>
   );
