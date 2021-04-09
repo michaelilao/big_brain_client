@@ -24,6 +24,7 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
         var interval = setInterval(() => {
             if(times==5){
                 clearInterval(interval);
+                console.log(score)
                 setUserScore(score);
                 setScreen(nextScreen);
                 return;

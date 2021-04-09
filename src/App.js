@@ -5,14 +5,14 @@ import { Nav } from './components/Nav/Nav'
 import { SubmitScore } from './components/SubmitScore/SubmitScore'
 import { MainScreen } from './components/MainScreen/MainScreen'
 import Algebra from './components/Algebra/Algebra'
-import NumberMemory from './components/NumberMemory/NumberMemory'
+import { NumberMemory } from './components/NumberMemory/NumberMemory'
 import { SeqController }from './components/SeqMemory/SeqController'
 import ReactionTime from './components/Reaction-time/ReactionTime'
 import './styles/App.scss';
 
 
 const App = () => {
-  const [userScore, setUserScore] = useState([0,0,0,0])
+  const [userScore, setUserScore] = useState([0])
   const [showAnalytics, setShowAnalytics] = useState(false)
   const [screen, setScreen] = useState('MainScreen')
   
@@ -22,6 +22,7 @@ const App = () => {
   const handleSetUserScore = (score) => {
     const newScore = userScore.slice(0)
     newScore.push(score)
+    console.log(newScore)
     setUserScore(newScore)
   }
   return (
@@ -31,7 +32,7 @@ const App = () => {
         <SubmitScore userScores={userScore} setScreen ={handleSetScreen} skipSubmit={showAnalytics}/>
       }
       {screen === 'MainScreen' && 
-        <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics} nextScreen={'Reaction-Time'}></MainScreen>
+        <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics} nextScreen={'Algebra'}></MainScreen>
       }
       {screen === 'Algebra' &&
         <Algebra setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SeqController'}></Algebra>
@@ -40,7 +41,10 @@ const App = () => {
         <SeqController setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'Reaction-Time'}/>
       }
       {screen === 'Reaction-Time' &&
-        <ReactionTime setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SubmitScore'}/>
+        <ReactionTime setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'NumberMemory'}/>
+      }
+      {screen === 'NumberMemory' &&
+        <NumberMemory setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SubmitScore'}/>
       }
     </Container>
     
