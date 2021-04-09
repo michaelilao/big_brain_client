@@ -64,7 +64,7 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
     }
   }
   return (
-    <div>
+    <div className="numberMemory">
       
       <div>
         { showing 

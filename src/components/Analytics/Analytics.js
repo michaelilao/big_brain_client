@@ -75,7 +75,7 @@ export const Analytics = ({ userScores, metrics }) => {
         })
     }
     return (
-        <Container id="Analystics" fluid className="px-5">
+        <Container id="Analytics" fluid className="px-5">
             {metrics && (
                 <Row>
                     {generateMiniGameCharts()}

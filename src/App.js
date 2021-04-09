@@ -12,10 +12,13 @@ import './styles/App.scss';
 
 
 const App = () => {
-  const [userScore, setUserScore] = useState([0])
+  const [userScore, setUserScore] = useState([])
   const [showAnalytics, setShowAnalytics] = useState(false)
   const [screen, setScreen] = useState('MainScreen')
   
+  useEffect(() => {
+    setUserScore([])
+  }, [])
   const handleSetScreen = (screen) => {
     setScreen(screen)
   }
