@@ -4,7 +4,7 @@ import { SeqMemory } from './SeqMemory'
 import { SeqMemoryShow } from './SeqMemoryShow'
 import './SeqMemory.scss'
 
-export const SeqController = ({setUserScore, setScreen}) => { 
+export const SeqController = ({setUserScore, setScreen, nextScreen}) => { 
     const [startGame, setStartGame] = useState(false)
     
     const handleStartGame = () => {
@@ -13,12 +13,12 @@ export const SeqController = ({setUserScore, setScreen}) => {
     }
 
     return (
-        <Container>
+        <Container className="seqController">
         {!startGame && 
             <SeqMemoryShow setStartGame ={handleStartGame}/>
         }
         {startGame && 
-            <SeqMemory setUserScore = {setUserScore} setScreen = {setScreen}/>
+            <SeqMemory setUserScore = {setUserScore} setScreen = {setScreen} nextScreen={nextScreen}/>
         }
         </Container>
     );

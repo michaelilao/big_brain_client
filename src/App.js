@@ -6,18 +6,15 @@ import { SubmitScore } from './components/SubmitScore/SubmitScore'
 import { MainScreen } from './components/MainScreen/MainScreen'
 import Algebra from './components/Algebra/Algebra'
 import NumberMemory from './components/NumberMemory/NumberMemory'
-
+import { SeqController }from './components/SeqMemory/SeqController'
+import ReactionTime from './components/Reaction-time/ReactionTime'
 import './styles/App.scss';
 
 
 const App = () => {
-  const [userScore, setUserScore] = useState([])
+  const [userScore, setUserScore] = useState([0,0,0,0])
   const [showAnalytics, setShowAnalytics] = useState(false)
   const [screen, setScreen] = useState('MainScreen')
-
-  useEffect(() => {
-    setUserScore(Array.from({ length: 6 }, () => Math.floor((Math.random() * 40) + 60)));
-  }, []); 
   
   const handleSetScreen = (screen) => {
     setScreen(screen)
@@ -34,13 +31,16 @@ const App = () => {
         <SubmitScore userScores={userScore} setScreen ={handleSetScreen} skipSubmit={showAnalytics}/>
       }
       {screen === 'MainScreen' && 
-        <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics}></MainScreen>
+        <MainScreen setUserScore={handleSetUserScore} setScreen ={handleSetScreen} setShowAnalytics={setShowAnalytics} nextScreen={'Reaction-Time'}></MainScreen>
       }
       {screen === 'Algebra' &&
-        <Algebra setUserScore={handleSetUserScore} setScreen ={handleSetScreen}></Algebra>
+        <Algebra setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SeqController'}></Algebra>
       }
-      {screen === 'NumberMemory' &&
-        <NumberMemory/>
+      {screen === 'SeqController' && 
+        <SeqController setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'Reaction-Time'}/>
+      }
+      {screen === 'Reaction-Time' &&
+        <ReactionTime setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SubmitScore'}/>
       }
     </Container>
     

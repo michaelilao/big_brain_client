@@ -3,7 +3,7 @@ import { Container, Button, Modal } from 'react-bootstrap';
 import './SeqMemory.scss'
 
 
-export const SeqMemory = ({setUserScore, setScreen}) => {
+export const SeqMemory = ({setUserScore, setScreen, nextScreen}) => {
   const [ squares, setSquares ] = useState(Array(16).fill(0));
   const [userSequence, setUserSequence] = useState([]);
   const [sequence, setSequence] = useState([13, 4, 8, 9, 12, 11, 10, 2, 3, 15]);
@@ -12,7 +12,7 @@ export const SeqMemory = ({setUserScore, setScreen}) => {
   
   const handleNextGame = () => {
     setUserScore(score)
-    setScreen('SubmitScore')
+    setScreen(nextScreen)
   }
 
   const blinkEffect = (i) => {

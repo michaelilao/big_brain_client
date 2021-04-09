@@ -60,7 +60,7 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
   return (
  
         
-    <div className="App">
+    <div className="algebra">
         <Container>
             <Row className="Game-info">
                 <Col className="Timer" >

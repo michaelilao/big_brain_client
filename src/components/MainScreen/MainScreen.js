@@ -4,7 +4,7 @@ import { getScore } from '../../requests/requests'
 import './MainScreen.scss'
 
 
-export const MainScreen = ({setScreen, setShowAnalytics, setUserScore}) => {
+export const MainScreen = ({setScreen, setShowAnalytics, setUserScore, nextScreen}) => {
     const [searchUserName, setsearchUserName] = useState(' ')
     const [showSearch, setShowSearch] = useState(false)
     const [alertDetails, setAlertDetails] = useState(' ')
@@ -56,7 +56,7 @@ export const MainScreen = ({setScreen, setShowAnalytics, setUserScore}) => {
                 </Row>
                 <Row className="justify-content-center py-4">
                     <Col xs={4}>
-                        <Button size="lg" className="btn-start w-100" onClick={()=>setScreen('Algebra')}>
+                        <Button size="lg" className="btn-start w-100" onClick={()=>setScreen(nextScreen)}>
                             Start Assessment
                         </Button>
                     </Col>

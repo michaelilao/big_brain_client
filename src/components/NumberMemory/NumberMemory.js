@@ -29,10 +29,15 @@ class NumberMemory extends React.Component {
       submit(){
         if(this.state.input == this.state.prevNum){
           console.log("ok correct");
-          this.setState({score: this.state.score+10});
+          var score = this.state.score+10
+          this.setState({score: score});
+          if(score === 100){
+            this.props.setScreen('SubmitScore')
+          }
         }
         console.log(this.state.score)
-        this.setState({input: ""});
+        this.props.setUserScore(this.state.score)
+        this.props.setScreen(this.nextScreen)
       }
     
       changeScreen(){

@@ -1,203 +1,206 @@
 @import '../../styles/App.scss';
-  
-  body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 40px;
-    background: $light-blue;
-  }
-  
-  ol, ul {
-    padding-left: 30px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-  
-  .status {
-    color: #424242;
-    margin-bottom: 10px;
-  }
-  
-  .square {
-    color: #424242;
-    background: $darker-blue;
-    border: 4px solid  #131111;
-    float: left;
-    font-weight: bold;
-    line-height: 136px;
-    height: 136px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 136px;
-  }
-  .click {
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-  }
-  .clickSquare {
-    animation-delay: 1s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 1s;  
-  }
-  .clickSquare1 {
-    animation-delay: 2s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 2s;  
-  }
-  .clickSquare2 {
-    animation-delay: 3s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 3s;  
-  }
-  .clickSquare3 {
-    animation-delay: 4s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 4s;  
-  }
-  .clickSquare4 {
-    animation-delay: 5s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 5s;  
-  }
-  .clickSquare5 {
-    animation-delay: 6s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 6s;  
-  }
-  .clickSquare6 {
-    animation-delay: 7s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 7s;  
-  }
-  .clickSquare7 {
-    animation-delay: 8s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 8s;  
-  }
-  .clickSquare8 {
-    animation-delay: 9s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 9s;  
-  }
-  .clickSquare9 {
-    animation-delay: 10s;
-    animation-duration: 600ms;
-    animation-name: blink;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    -webkit-animation:blink 600ms 1; /* Safari and Chrome */
-    -webkit-animation-delay: 10s;  
-  }
-  @keyframes blink {
-    from {
-        background:$darker-blue;
-    }
-    to {
-        background:white;
-    }
-  }
-  @-webkit-keyframes blink {
-    from {
-        background:$darker-blue;
-    }
-    to {
-        background:white;
-    }
-  }
+  .seqController{
 
-  .square:focus {
-    outline: none;
-  }
   
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  .game {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .game-info {
-    font-size: 48px;
-    color: #424242;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .grid{
-    height: 300px;
-    width: 300px;
-    background: $dark-blue;
-    display: grid;
-    border: 5px solid black;
-    grid-template-columns: auto auto auto;
-    margin: 70px auto 10px auto;
-    border-radius: 5px;
-  }
-  
-  .box{
-    border: 1px solid black;
-  }
-  
-  .start-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: green;
-    font-weight: bold;
-    height: 80px;
-    padding: 0;
-    width: 136px;
-  }
+    body {
+      font: 14px "Century Gothic", Futura, sans-serif;
+      margin: 40px;
+      background: $light-blue;
+    }
+    
+    ol, ul {
+      padding-left: 30px;
+    }
+    
+    .board-row:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+    
+    .status {
+      color: #424242;
+      margin-bottom: 10px;
+    }
+    
+    .square {
+      color: #424242;
+      background: $darker-blue;
+      border: 4px solid  #131111;
+      float: left;
+      font-weight: bold;
+      line-height: 136px;
+      height: 136px;
+      margin-right: -1px;
+      margin-top: -1px;
+      padding: 0;
+      text-align: center;
+      width: 136px;
+    }
+    .click {
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+    }
+    .clickSquare {
+      animation-delay: 1s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 1s;  
+    }
+    .clickSquare1 {
+      animation-delay: 2s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 2s;  
+    }
+    .clickSquare2 {
+      animation-delay: 3s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 3s;  
+    }
+    .clickSquare3 {
+      animation-delay: 4s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 4s;  
+    }
+    .clickSquare4 {
+      animation-delay: 5s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 5s;  
+    }
+    .clickSquare5 {
+      animation-delay: 6s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 6s;  
+    }
+    .clickSquare6 {
+      animation-delay: 7s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 7s;  
+    }
+    .clickSquare7 {
+      animation-delay: 8s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 8s;  
+    }
+    .clickSquare8 {
+      animation-delay: 9s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 9s;  
+    }
+    .clickSquare9 {
+      animation-delay: 10s;
+      animation-duration: 600ms;
+      animation-name: blink;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      -webkit-animation:blink 600ms 1; /* Safari and Chrome */
+      -webkit-animation-delay: 10s;  
+    }
+    @keyframes blink {
+      from {
+          background:$darker-blue;
+      }
+      to {
+          background:white;
+      }
+    }
+    @-webkit-keyframes blink {
+      from {
+          background:$darker-blue;
+      }
+      to {
+          background:white;
+      }
+    }
+
+    .square:focus {
+      outline: none;
+    }
+    
+    .kbd-navigation .square:focus {
+      background: #ddd;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    
+    .game {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-info {
+      font-size: 48px;
+      color: #424242;
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .grid{
+      height: 300px;
+      width: 300px;
+      background: $dark-blue;
+      display: grid;
+      border: 5px solid black;
+      grid-template-columns: auto auto auto;
+      margin: 70px auto 10px auto;
+      border-radius: 5px;
+    }
+    
+    .box{
+      border: 1px solid black;
+    }
+    
+    .start-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background: green;
+      font-weight: bold;
+      height: 80px;
+      padding: 0;
+      width: 136px;
+    }
+}

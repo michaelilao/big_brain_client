@@ -4,10 +4,10 @@ import Grid from './Grid';
 import StartRound from './StartRound';
 import Rules from './RulesDialog';
 import RulesDialog from './RulesDialog';
-import './index.css'
+import './index.scss'
 
 
-function ReactionTime({ setUserScore, setScreens}) {
+function ReactionTime({ setUserScore, setScreen, nextScreen}) {
   //STATES---------------------------------------------------------------
 
   //State for drawing the grid and colouring
@@ -121,20 +121,26 @@ function ReactionTime({ setUserScore, setScreens}) {
       }
 
     }
-
+    const handleGameDone = () => {
+      console.log('here')
+      setUserScore(score)
+      setScreen(nextScreen)
+    }
     //To update the current round of the game
     const updateRound = () => {
       setRound(round+1)
+      if(round+1 >= 3){
+        handleGameDone()
+      }
     }
 
-
-  //MAIN SECTION-------------------------------------------------
+    
+   //MAIN SECTION-------------------------------------------------
   return (
-    <div>
+    <div className="reactionTime">
        <Header round={round} currentScore={score} time={reactionTime}/>
       <Grid grid={squares} time={startTime} gridClicked={sqaurePressed}/>
       <StartRound grid={squares} setStart={startRound}/>
-      {round => 10 ? (setUserScore(score)) : null}
     </div>
   );
 }
