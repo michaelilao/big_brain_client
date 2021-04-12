@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import {faBullseye, faCrown, faTrophy, faClock} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { Button, Modal } from 'react-bootstrap';
+
 import './AimTrainer.css';
 import randomNumber from "./RandomNumber";
 
 
-const AimTrainer = () => {
+const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
   const [left, setLeft] = useState(null);
   const [top, setTop] = useState(null);
   const [missShot, setMissShot] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [timer, setTimer] = useState(null);
+  const [gameStarted, setGameOver] = useState(false);
+
 
   const getPosition = () => {
     let leftPosition = randomNumber(0, 90);
@@ -36,6 +40,7 @@ const AimTrainer = () => {
       decreaseTimer(i);
     }
     console.log("end of the decrease")
+    setGameOver(true)
   };
 
   const decreasePoints = () => {
@@ -55,6 +60,10 @@ const AimTrainer = () => {
     }, 100)
   };
 
+  const nextGame = () => {
+    setUserScore(score)
+    setScreen(nextScreen)
+  }
   return (
     <div className="aimTrainerMainContainer">
       <h1 style={{color: 'white'}}>Aim Trainer</h1>
@@ -87,6 +96,19 @@ const AimTrainer = () => {
             }}>GO</p>
         }
       </div>
+      {timer === 0 && gameStarted && 
+        (<Modal show={true}>
+          <Modal.Header>
+            <Modal.Title>Aim Trainer Score:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body> {score} </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={nextGame}>
+              Next Game
+            </Button>
+          </Modal.Footer>
+        </Modal>)
+      }
     </div>
   )
 };

@@ -16,7 +16,7 @@ export const SeqMemory = ({setUserScore, setScreen, nextScreen}) => {
   }
 
   const blinkEffect = (i) => {
-    if (squares[i] == 0) return 'square'
+    if (squares[i] === 0) return 'square'
     return 'square click'
   }
 
@@ -37,9 +37,9 @@ export const SeqMemory = ({setUserScore, setScreen, nextScreen}) => {
   }
 
   const computeScore = () => {
-    if (userSequence.length == 10) {
+    if (userSequence.length === 10) {
       for (var i = 0; i < 10; i++){
-        if (sequence[i]==userSequence[i]) {
+        if (sequence[i]===userSequence[i]) {
           score = score + 10;
         }
       }
@@ -77,9 +77,9 @@ export const SeqMemory = ({setUserScore, setScreen, nextScreen}) => {
           </div>
         </div>
       </div>
-      {userSequence.length == 10 && 
+      {userSequence.length === 10 && 
       (<Modal show={show}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Sequence Memory Score:</Modal.Title>
         </Modal.Header>
         <Modal.Body> {computeScore()} </Modal.Body>

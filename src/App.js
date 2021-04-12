@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import { Nav } from './components/Nav/Nav'
 import { SubmitScore } from './components/SubmitScore/SubmitScore'
 import { MainScreen } from './components/MainScreen/MainScreen'
+import AimTrainer from './components/AimTrainer/AimTrainer'
 import Algebra from './components/Algebra/Algebra'
 import { NumberMemory } from './components/NumberMemory/NumberMemory'
 import { SeqController }from './components/SeqMemory/SeqController'
@@ -12,12 +13,12 @@ import './styles/App.scss';
 
 
 const App = () => {
-  const [userScore, setUserScore] = useState([0])
+  const [userScore, setUserScore] = useState([])
   const [showAnalytics, setShowAnalytics] = useState(false)
   const [screen, setScreen] = useState('MainScreen')
-  
+
   useEffect(() => {
-    setUserScore([0])
+    setUserScore([])
   }, [])
   const handleSetScreen = (screen) => {
     setScreen(screen)
@@ -46,7 +47,10 @@ const App = () => {
         <ReactionTime setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'NumberMemory'}/>
       }
       {screen === 'NumberMemory' &&
-        <NumberMemory setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SubmitScore'}/>
+        <NumberMemory setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'AimTrainer'}/>
+      }
+      {screen === 'AimTrainer' && 
+        <AimTrainer setUserScore={handleSetUserScore} setScreen ={handleSetScreen} nextScreen={'SubmitScore'}/>
       }
     </Container>
     
