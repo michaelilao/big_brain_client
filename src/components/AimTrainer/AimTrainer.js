@@ -57,7 +57,7 @@ const AimTrainer = () => {
 
   return (
     <div className="aimTrainerMainContainer">
-      <h1 style={{color: 'white'}}>Train your aim</h1>
+      <h1 style={{color: 'white'}}>Aim Trainer</h1>
       <div className="statsAimTrainerContainer">
         <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span style={{ color: "yellow"}}>{timer}</span></h3>
         <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span style={{ color: "yellow"}}>{score}</span> : null}</h3>
