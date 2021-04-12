@@ -1,0 +1,53 @@
+aimTrainerMainContainer {
+    background-color: #282c34;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.statsAimTrainerContainer {
+    width: 70%;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+}
+
+.gameContainer {
+    width: 70%;
+    height: 70%;
+    background-color: lightgrey;
+    cursor: crosshair;
+}
+
+.missShot {
+    background-color: red;
+}
+
+.target {
+    width: 65px;
+    height: 65px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.launchGameButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: indianred;
+    position: relative;
+    top: 40%;
+    left: 42%;
+    color: #282c34;
+    width: 15%;
+    height: 60px;
+    border-radius: 25px;
+    font-size: 26px;
+}
+.launchGameButton:active {
+    transform: scale(0.95,0.95);
+}
