@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {faBullseye, faCrown, faTrophy, faClock} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import './AimTrainer.css';
+import './AimTrainer.scss';
 import randomNumber from "./RandomNumber";
 
 
