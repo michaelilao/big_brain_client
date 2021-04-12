@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import Header from './Header';
 import Grid from './Grid';
 import StartRound from './StartRound';
-import Rules from './RulesDialog';
-import RulesDialog from './RulesDialog';
 import './index.scss'
+import ShowModal from './ShowModal';
 
 
-function ReactionTime({ setUserScore, setScreen, nextScreen}) {
+function ReactionTime({setUserScore, setScreen, nextScreen}) {
   //STATES---------------------------------------------------------------
 
   //State for drawing the grid and colouring
@@ -62,6 +62,9 @@ function ReactionTime({ setUserScore, setScreen, nextScreen}) {
     //state for the reaction time for each round
     const [reactionTime, setReactionTime] = useState(null)
 
+    //state for showing the instructions
+    const [show, setShow] = useState(true)
+
     //---------------------------------------------------------------
 
     //Functions for updating the game states------------------------
@@ -106,7 +109,7 @@ function ReactionTime({ setUserScore, setScreen, nextScreen}) {
       setReactionTime(timeOfRound)
 
       //Calculating the score out of 100
-      let roundScore = Math.round(300/timeOfRound*10)
+      let roundScore = Math.round(400/timeOfRound*10)
       
       roundScore = roundScore > 10 ? 10 : roundScore
       setScore(score+roundScore)
@@ -122,28 +125,48 @@ function ReactionTime({ setUserScore, setScreen, nextScreen}) {
       }
 
     }
+
     const handleGameDone = (score) => {
-      console.log('here')
+      console.log(score)
       setUserScore(score)
       setScreen(nextScreen)
     }
+
     //To update the current round of the game
     const updateRound = (score) => {
       setRound(round+1)
-      if(round+1 >= 3){
+      if(round >= 10){
         handleGameDone(score)
       }
+    }
+
+    //To stop showing the instructions modal
+    const handleShowSeq = () => {
+      setShow(!show)
     }
 
     
    //MAIN SECTION-------------------------------------------------
   return (
     <div className="reactionTime">
-       <Header round={round} currentScore={score} time={reactionTime}/>
+      <Modal show={show}>
+        <Modal.Header closeButton>
+            <Modal.Title>Reaction Time Rules:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {'Press the start round button and try to click the coloured sqaured in the grid as fast as possible!'} </Modal.Body>
+        <Modal.Footer>
+            <Button variant="primary" onClick={handleShowSeq}>
+                Start
+            </Button>
+        </Modal.Footer>
+      </Modal>
+      <Header round={round} currentScore={score} time={reactionTime}/>
       <Grid grid={squares} time={startTime} gridClicked={sqaurePressed}/>
       <StartRound grid={squares} setStart={startRound}/>
+      {/*round >= 10 ? (<ShowModal score={score} setUserScore={setUserScore} 
+      setScreen ={setScreen} nextScreen={nextScreen} /> ) : null} */}
     </div>
-  );
+  )
 }
 
 export default ReactionTime;
