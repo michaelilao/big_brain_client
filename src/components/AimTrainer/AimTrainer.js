@@ -59,7 +59,7 @@ const AimTrainer = () => {
     <div className="aimTrainerMainContainer">
       <h1 style={{color: 'white'}}>Train your aim</h1>
       <div className="statsAimTrainerContainer">
-        <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faClock} style={{ color: 'indianred' }} /> Time : <span style={{ color: "yellow"}}>{timer}</span></h3>
+        <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span style={{ color: "yellow"}}>{timer}</span></h3>
         <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span style={{ color: "yellow"}}>{score}</span> : null}</h3>
         <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faCrown} style={{ color: 'orange' }} /> Best score : {bestScore > 0 ? <span style={{ color: "yellow"}}>{bestScore}</span> : null}</h3>
       </div>
@@ -77,7 +77,7 @@ const AimTrainer = () => {
                    countShot();
                  }}
             >
-              <FontAwesomeIcon icon={faBullseye} color='indianred' className="fa-4x"/>
+              <FontAwesomeIcon icon={faBullseye} color='lightcyan' className="fa-4x"/>
             </div>
             : <p className="launchGameButton" onClick={() => {
               setScore(0);
