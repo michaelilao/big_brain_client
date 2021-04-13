@@ -19,6 +19,7 @@ const App = () => {
 
   useEffect(() => {
     setUserScore([])
+    setShowAnalytics(false)
   }, [])
   const handleSetScreen = (screen) => {
     setScreen(screen)
