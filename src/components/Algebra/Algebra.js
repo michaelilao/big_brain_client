@@ -11,6 +11,7 @@ const totalTime = 50
 
 function Algebra({setUserScore, setScreen, nextScreen}) {
     const [completed, setCompleted] = useState(totalTime);
+    const [show, setShow] = useState(true)
     const [optionClicked, setOption] = useState(0);
     const [newCombination, setNew] = useState(0);
 
@@ -22,16 +23,18 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
 
     var times = 0;
     useEffect(() => {
-        var interval = setInterval(() => {
+        if(!show){        
+            var interval = setInterval(() => {
             if(times==50){
                 clearInterval(interval);
                 return;
             }
             times++;
             setCompleted(completed => completed - 1)
-        }, 1000);
+            }, 1000);
+        }
 
-    }, []);
+    }, [show]);
     useEffect(()=>{
         if(completed === totalTime || newCombination>=Data.length-1){
             // console.log(score)
@@ -65,52 +68,67 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
         setUserScore(score)
         setScreen(nextScreen)
       }
+    
+    const handleShowSeq = () => {
+        setShow(!show)
+    }
 
   return (
  
         
     <div className="algebra">
-        <Container>
-            <Row className="Game-info">
-                <Col className="Timer" >
-                    <RulesDialog instructions = {instruction}/>
-                </Col>
-                <Col className="Timer" >
-                    <TimerBar key={0}  max = {totalTime} completed={completed}/>
-                </Col>
-                <Col >
-                    <p>
-                        Score: {score}
-                    </p>
-                </Col>
-            </Row>
-        </Container>
-        <table className="Options-table">
-            <tbody>
-                <tr>
-                    <td>
-                        <Option displayNum={options[0]} optNum={1} setOption={setOption}/>
-                    </td>
-                    <td>
-                        <Option displayNum={options[1]} optNum={2} setOption={setOption}/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <Option displayNum={options[2]} optNum={3} setOption={setOption}/>
-                    </td>
-                    <td>
-                        <Option displayNum={options[3]} optNum={4} setOption={setOption}/>
-                    </td>
-                </tr>
-            </tbody>
+        <Modal show={show}>
+            <Modal.Header closeButton>
+                <Modal.Title>Algebra Rules:</Modal.Title>
+            </Modal.Header>
+            <Modal.Body> {"Click the corresponding answer for the given algebra prompt"} </Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" onClick={handleShowSeq}>
+                    Start
+                </Button>
+            </Modal.Footer>
+        </Modal>
+            <Container>
+                <Row className="Game-info">
+                    <Col className="Timer" >
+                        <RulesDialog instructions = {instruction}/>
+                    </Col>
+                    <Col className="Timer" >
+                        <TimerBar key={0}  max = {totalTime} completed={completed}/>
+                    </Col>
+                    <Col >
+                        <p>
+                            Score: {score}
+                        </p>
+                    </Col>
+                </Row>
+            </Container>
+            <table className="Options-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <Option displayNum={options[0]} optNum={1} setOption={setOption}/>
+                        </td>
+                        <td>
+                            <Option displayNum={options[1]} optNum={2} setOption={setOption}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Option displayNum={options[2]} optNum={3} setOption={setOption}/>
+                        </td>
+                        <td>
+                            <Option displayNum={options[3]} optNum={4} setOption={setOption}/>
+                        </td>
+                    </tr>
+                </tbody>
 
-        </table>
-        <div className="Prompt">
-            <p>
-                {Prompt}
-            </p>
-        </div>
+            </table>
+            <div className="Prompt">
+                <p>
+                    {Prompt}
+                </p>
+            </div>
         {(completed <=  0 || newCombination>=Data.length-1) && 
             (<Modal show={true}>
                 <Modal.Header>
