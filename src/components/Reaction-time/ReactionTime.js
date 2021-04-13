@@ -4,7 +4,6 @@ import Header from './Header';
 import Grid from './Grid';
 import StartRound from './StartRound';
 import './index.scss'
-import ShowModal from './ShowModal';
 
 
 function ReactionTime({setUserScore, setScreen, nextScreen}) {
@@ -64,6 +63,10 @@ function ReactionTime({setUserScore, setScreen, nextScreen}) {
 
     //state for showing the instructions
     const [show, setShow] = useState(true)
+
+    //state for showing modal
+
+    const [showModal, setShowModal] = useState(false)
 
     //---------------------------------------------------------------
 
@@ -126,17 +129,17 @@ function ReactionTime({setUserScore, setScreen, nextScreen}) {
 
     }
 
-    const handleGameDone = (score) => {
-      console.log(score)
+    const handleGameDone = () => {
+      //console.log('here')
       setUserScore(score)
       setScreen(nextScreen)
-    }
+  }
 
     //To update the current round of the game
     const updateRound = (score) => {
       setRound(round+1)
-      if(round >= 10){
-        handleGameDone(score)
+      if(round >= 9){
+        setShowModal(true)
       }
     }
 
@@ -165,6 +168,17 @@ function ReactionTime({setUserScore, setScreen, nextScreen}) {
       <StartRound grid={squares} setStart={startRound}/>
       {/*round >= 10 ? (<ShowModal score={score} setUserScore={setUserScore} 
       setScreen ={setScreen} nextScreen={nextScreen} /> ) : null} */}
+      <Modal show={showModal}>
+        <Modal.Header closeButton>
+            <Modal.Title>Reaction Score:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {score} </Modal.Body>
+        <Modal.Footer>
+            <Button variant="primary" onClick={handleGameDone}>
+                Next Game
+            </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }
