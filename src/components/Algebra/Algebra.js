@@ -1,15 +1,16 @@
 import React, { useState, useEffect} from "react";
 import './Algebra.scss';
-import { Container, Row, Col, Button, Form, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import TimerBar from './TimerBar'
 import Option from './Option'
 import RulesDialog from '../RulesDialog/RulesDialog'
 import {Data} from './Data'
 
 const instruction = "Click the corresponding answer for the given prompt"
+const totalTime = 50
 
 function Algebra({setUserScore, setScreen, nextScreen}) {
-    const [completed, setCompleted] = useState(100);
+    const [completed, setCompleted] = useState(totalTime);
     const [optionClicked, setOption] = useState(0);
     const [newCombination, setNew] = useState(0);
 
@@ -22,7 +23,7 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
     var times = 0;
     useEffect(() => {
         var interval = setInterval(() => {
-            if(times==100){
+            if(times==50){
                 clearInterval(interval);
                 return;
             }
@@ -32,10 +33,10 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
 
     }, []);
     useEffect(()=>{
-        if(completed == 95){
-            console.log(score)
-            setUserScore(score);
-            setScreen(nextScreen);
+        if(completed === totalTime || newCombination>=Data.length-1){
+            // console.log(score)
+            // setUserScore(score);
+            // setScreen(nextScreen);
         }
     }, [completed]);
     useEffect(()=>{//handling click
@@ -60,7 +61,10 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
         console.log("Score: " + score)
     }, [score])
 
-
+    const handleNextGame = () => {
+        setUserScore(score)
+        setScreen(nextScreen)
+      }
 
   return (
  
@@ -72,7 +76,7 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
                     <RulesDialog instructions = {instruction}/>
                 </Col>
                 <Col className="Timer" >
-                    <TimerBar key={0}  completed={completed}/>
+                    <TimerBar key={0}  max = {totalTime} completed={completed}/>
                 </Col>
                 <Col >
                     <p>
@@ -107,7 +111,19 @@ function Algebra({setUserScore, setScreen, nextScreen}) {
                 {Prompt}
             </p>
         </div>
-        {/* <ScrollDialog/> */}
+        {(completed <=  0 || newCombination>=Data.length-1) && 
+            (<Modal show={true}>
+                <Modal.Header>
+                <Modal.Title>Algebra Score:</Modal.Title>
+                </Modal.Header>
+                <Modal.Body> {score} </Modal.Body>
+                <Modal.Footer>
+                <Button variant="primary" onClick={handleNextGame}>
+                    Next Game
+                </Button>
+                </Modal.Footer>
+            </Modal>)
+        }
 
       </div>
       

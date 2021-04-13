@@ -3,7 +3,7 @@ import './TimerBar.scss'
 const ProgressBar = (props) => {
 
 
-    const { bgcolor, completed } = props;
+    const { bgcolor, completed, max } = props;
     const duration = 100000;//100s in ms
     const date = new Date();
     const endTime = date.getTime() + duration;
@@ -12,7 +12,7 @@ const ProgressBar = (props) => {
 
     return (
         <div className="containerTimer">
-            <div className="filler" style={{width: `${completed}%`}}>
+            <div className="filler" style={{width: `${completed/max*100.0}%`}}>
                 <span className="label">{`${completed}s`}</span>
             </div>
         </div>
