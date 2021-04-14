@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Jumbotron, Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Button, Form, Modal } from 'react-bootstrap';
 import './NumberMemory.scss';
 import ProgressBar from './TimberBar'
 
@@ -18,6 +18,8 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
 
   const [show, setShow] = useState(true)
 
+  const [showInstructions, setShowInstructions] = useState(true)
+  const [showScore, setShowScore] = useState(false)
   const getInput = (event) =>{
     setInput(event.target.value)
   }
@@ -36,13 +38,15 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
       }
     }
     else {
-      alert(`Your Score for Number Memory is:${score}`);
-      console.log(score)
-      setUserScore(score)
-      setScreen(nextScreen)
+      setShowScore(true)
+      
     }
   }
 
+  const handleGameDone = () => {
+    setUserScore(score)
+    setScreen(nextScreen)
+  }
   const changeScreen = () => {
     setShowing(!showing)
     setShowing2(!showing2)
@@ -97,7 +101,17 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
   }
   return (
     <div className="mainBack">
-      
+      <Modal show={showInstructions}>
+        <Modal.Header closeButton>
+            <Modal.Title>Number Memory Rules:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {'Memorize the numbers and type them back within the given time!'} </Modal.Body>
+        <Modal.Footer>
+            <Button variant="primary" onClick={()=>setShowInstructions(false)}>
+                Close
+            </Button>
+        </Modal.Footer>
+      </Modal>
       <div>
         { showing 
             ? 
@@ -144,7 +158,17 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
         }
       </div>
       
-      
+      <Modal show={showScore}>
+        <Modal.Header closeButton>
+            <Modal.Title>Number Memory Score:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {score} </Modal.Body>
+        <Modal.Footer>
+            <Button variant="primary" onClick={handleGameDone}>
+                Next Game
+            </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

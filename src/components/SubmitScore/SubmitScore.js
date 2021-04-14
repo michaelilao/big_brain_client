@@ -6,7 +6,7 @@ import './SubmitScore.scss'
 
 
 export const SubmitScore = ({userScores, setScreen, skipSubmit}) => {
-    const [userName, setUserName] = useState(" ")
+    const [userName, setUserName] = useState("")
     const [showForm, setShowForm] = useState(false)
     const [showAnalytics, setshowAnalytics] = useState(false)
     const [metrics, setMetrics] = useState([])

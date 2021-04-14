@@ -15,7 +15,7 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
   const [bestScore, setBestScore] = useState(0);
   const [timer, setTimer] = useState(null);
   const [gameStarted, setGameOver] = useState(false);
-
+  const [showInstructions, setShowInstructions] = useState(true);
 
   const getPosition = () => {
     let leftPosition = randomNumber(0, 90);
@@ -44,12 +44,12 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
   };
 
   const decreasePoints = () => {
-    setScore(score - 10);
+    setScore(score - 2);
   };
 
   const countShot = () => {
-    if (score + 10 > bestScore) setBestScore(score + 10);
-    setScore(score + 10);
+    if (score + 2 > bestScore) setBestScore(score + 2);
+    setScore(score + 2);
   };
 
   const missedShot = () => {
@@ -66,11 +66,11 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
   }
   return (
     <div className="aimTrainerMainContainer">
-      <h1 style={{color: 'white'}}>Aim Trainer</h1>
+      <h1 >Aim Trainer</h1>
       <div className="statsAimTrainerContainer">
-        <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span style={{ color: "yellow"}}>{timer}</span></h3>
-        <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span style={{ color: "yellow"}}>{score}</span> : null}</h3>
-        <h3 style={{color: 'white'}}><FontAwesomeIcon icon={faCrown} style={{ color: 'orange' }} /> Best score : {bestScore > 0 ? <span style={{ color: "yellow"}}>{bestScore}</span> : null}</h3>
+        <h3><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span >{timer}</span></h3>
+        <h3><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span>{score}</span> : null}</h3>
+        <h3><FontAwesomeIcon icon={faCrown} style={{ color: 'orange' }} /> Best score : {bestScore > 0 ? <span>{bestScore}</span> : null}</h3>
       </div>
       <div className={`gameContainer ${missShot ? 'missShot' : null}`}>
         {
@@ -96,6 +96,17 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
             }}>GO</p>
         }
       </div>
+      <Modal show={showInstructions}>
+        <Modal.Header closeButton>
+            <Modal.Title>Aim Trainer Rules:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {'Click on the targets as fast as you can before the time runs out!'} </Modal.Body>
+        <Modal.Footer>
+            <Button variant="primary" onClick={()=>setShowInstructions(false)}>
+                Close
+            </Button>
+        </Modal.Footer>
+      </Modal>
       {timer === 0 && gameStarted && 
         (<Modal show={true}>
           <Modal.Header>

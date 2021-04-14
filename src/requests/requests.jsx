@@ -1,5 +1,6 @@
 import axios from 'axios';
-const API = "http://localhost:8080/api"
+const API =  process.env.NODE_ENV === 'production' ? 'https://bigbrain-mcmaster-server.herokuapp.com/api' : "http://localhost:8080/api"
+console.log(API)
 export const addScore = async (req) => {
     const response = await axios.post(`${API}/score/addscore`, {
         username: req.username,
