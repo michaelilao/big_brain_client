@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
 import './Nav.scss'
 
-export const Nav = ({setScreen, setUserScore}) => {
+export const Nav = ({setScreen, setUserScore, setShowAnalytics}) => {
     const handleClick = () =>
     {
         setScreen('MainScreen')
         setUserScore([])
+        setShowAnalytics(false)
     }
     return (
         <Container id="NavBar" fluid className="px-0">

@@ -31,7 +31,7 @@ const App = () => {
   }
   return (
     <Container fluid className="p-0">
-      <Nav setScreen={handleSetScreen} setUserScore={setUserScore}/>
+      <Nav setScreen={handleSetScreen} setUserScore={setUserScore} setShowAnalytics={setShowAnalytics}/>
       {screen === 'SubmitScore' && 
         <SubmitScore userScores={userScore} setScreen ={handleSetScreen} skipSubmit={showAnalytics}/>
       }
