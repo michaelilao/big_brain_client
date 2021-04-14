@@ -27,7 +27,6 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
   const decreaseTimer = (i) => {
     setTimeout(() => {
       setTimer(30 - i);
-      console.log(30 - i);
     }, 1000 * i);
   };
 
@@ -39,7 +38,6 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
     for (let i = 30; i > 0; i--) {
       decreaseTimer(i);
     }
-    console.log("end of the decrease")
     setGameOver(true)
   };
 

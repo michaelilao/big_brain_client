@@ -2,7 +2,6 @@ import { Button, Modal } from 'react-bootstrap';
 
 const ShowModal = ({score, setUserScore, setScreen, nextScreen}) => {
     const handleGameDone = (score) => {
-        //console.log('here')
         setUserScore(score)
         setScreen(nextScreen)
     }

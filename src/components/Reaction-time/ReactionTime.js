@@ -83,7 +83,6 @@ function ReactionTime({setUserScore, setScreen, nextScreen}) {
     //Changes the colour of the squares to default
     const randomSqaure = () =>{
       let id_selected = Math.round(1 + (Math.random() * (9-1)));
-      //console.log(id_selected);
       setSquares(squares.map((square) => (
         square.id === id_selected ? {...square, selected: true}: square
       )))
@@ -130,7 +129,6 @@ function ReactionTime({setUserScore, setScreen, nextScreen}) {
     }
 
     const handleGameDone = () => {
-      //console.log('here')
       setUserScore(score)
       setScreen(nextScreen)
   }

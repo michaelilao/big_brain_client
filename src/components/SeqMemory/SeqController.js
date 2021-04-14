@@ -10,7 +10,6 @@ export const SeqController = ({setUserScore, setScreen, nextScreen}) => {
     
     const handleStartGame = () => {
         setStartGame(!startGame)
-        console.log('here')
     }
 
     const handleShowSeq = () => {
