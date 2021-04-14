@@ -68,9 +68,9 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
     <div className="aimTrainerMainContainer">
       <h1 >Aim Trainer</h1>
       <div className="statsAimTrainerContainer">
-        <h3><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span style={{ color: "yellow"}}>{timer}</span></h3>
-        <h3><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span style={{ color: "yellow"}}>{score}</span> : null}</h3>
-        <h3><FontAwesomeIcon icon={faCrown} style={{ color: 'orange' }} /> Best score : {bestScore > 0 ? <span style={{ color: "yellow"}}>{bestScore}</span> : null}</h3>
+        <h3><FontAwesomeIcon icon={faClock} style={{ color: 'lightcyan' }} /> Time : <span >{timer}</span></h3>
+        <h3><FontAwesomeIcon icon={faTrophy} style={{ color: 'yellow' }} /> Score : {score > 0 ? <span>{score}</span> : null}</h3>
+        <h3><FontAwesomeIcon icon={faCrown} style={{ color: 'orange' }} /> Best score : {bestScore > 0 ? <span>{bestScore}</span> : null}</h3>
       </div>
       <div className={`gameContainer ${missShot ? 'missShot' : null}`}>
         {
