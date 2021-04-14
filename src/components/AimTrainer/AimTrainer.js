@@ -113,7 +113,7 @@ const AimTrainer = ({setUserScore, setScreen, nextScreen}) => {
           <Modal.Body> {score} </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={nextGame}>
-              Next Game
+              View Score
             </Button>
           </Modal.Footer>
         </Modal>)
