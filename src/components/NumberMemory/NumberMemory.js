@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Jumbotron, Container, Row, Col, Button, Form, Modal } from 'react-bootstrap';
 import './NumberMemory.scss';
-import ProgressBar from './TimberBar'
+import ProgressBar from './TimerBar'
 
 export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
   let firstNum = Math.floor(Math.random() * (10 - 1) + 1);
