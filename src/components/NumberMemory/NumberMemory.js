@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Jumbotron, Container, Row, Col, Button, Form, ProgressBar } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Jumbotron, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import './NumberMemory.scss';
+import ProgressBar from './TimberBar'
 
 export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
   let firstNum = Math.floor(Math.random() * (10 - 1) + 1);
@@ -11,7 +12,11 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
   const [prevNum, setPrevNum] = useState(firstNum)
   const [input, setInput] = useState(" ")
   const [score, setScore] = useState(0)
+
   const [showSec, setShowSec] = useState(3000)
+  const [completed, setCompleted] = useState(3000);
+
+  const [show, setShow] = useState(true)
 
   const getInput = (event) =>{
     setInput(event.target.value)
@@ -43,6 +48,27 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
     setShowing2(!showing2)
   }
 
+  var times = showSec;
+  useEffect(() => {
+      if(!show){        
+            times = showSec;
+            setShow(true);
+            setCompleted(times);
+          var interval = setInterval(() => {
+            if(times<=0){
+                clearInterval(interval);
+                // setShowSec(showSec => showSec + 1250)
+                return;
+            }
+            times-=250;
+            //console.log("second has passed");
+            setCompleted(completed => completed - 250)
+          }, 250);
+      }
+
+  }, [show]);
+
+
   const makeTimer = () => {
 
     let max_val = initial*10;
@@ -51,11 +77,15 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
     setNum(temp)
     setInitial(max_val)
     setPrevNum(temp)
-    console.log(showSec)
+    // console.log(showSec)
+
     
+    setShow(false);
     setTimeout(() => {
       setNum(" ")
-      setShowSec(showSec + 1250)
+      var current = new Date()
+      //console.log("sec: ", current.getSeconds() - start_time);
+      setShowSec(showSec => showSec + 1250)
     }, showSec)
   }
 
@@ -89,7 +119,10 @@ export const NumberMemory =({setScreen, setUserScore, nextScreen}) => {
               </div>
               <h2 className="shownum">{num}</h2>
               <br/>
-              <ProgressBar variant="info" now={20} />
+              <div  className="progress">
+                <ProgressBar key={0}  max = {showSec} completed={completed}/>
+              </div>
+
               <h4 className="ques">What was the Number?</h4>
               
               {num == " " ? 
