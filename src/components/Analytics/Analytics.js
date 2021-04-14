@@ -29,6 +29,7 @@ export const Analytics = ({ userScores, metrics }) => {
         return categories
     }
     const generateColour = (index, score) => {
+        if (score >= 100) return '#1F75FE'
         if (index === Math.floor(score/10)) return '#1F75FE'
         else return '#B9DFFF'
         
