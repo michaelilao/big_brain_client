@@ -5,7 +5,7 @@ import './MainScreen.scss'
 
 
 export const MainScreen = ({setScreen, setShowAnalytics, setUserScore, nextScreen}) => {
-    const [searchUserName, setsearchUserName] = useState(' ')
+    const [searchUserName, setsearchUserName] = useState('')
     const [showSearch, setShowSearch] = useState(false)
     const [alertDetails, setAlertDetails] = useState(' ')
     const handleSetShowSearch = () => {
